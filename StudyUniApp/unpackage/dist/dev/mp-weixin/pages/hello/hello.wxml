@@ -1,1 +1,0 @@
-<view bind:__l="__l"><navigator url="../index/index" open-type="navigateBack">{{'hello world\n\t\t'+test+''}}</navigator></view>
