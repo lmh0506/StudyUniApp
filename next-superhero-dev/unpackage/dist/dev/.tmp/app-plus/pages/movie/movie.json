@@ -1,4 +1,15 @@
 {
+  "titleNView": {
+    "type": "transparent",
+    "buttons": [
+      {
+        "type": "share"
+      },
+      {
+        "type": "home"
+      }
+    ]
+  },
   "usingComponents": {
     "trailer-stars": "/components/trailerStars"
   }

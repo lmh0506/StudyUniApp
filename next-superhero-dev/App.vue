@@ -22,4 +22,11 @@
 	.page-block{
 		background-color: #fff;
 	}
+	.line-wrapper{
+		padding: 0 20upx;
+	}
+	.line{
+		height: 1px;
+		background: #dbdbda;
+	}
 </style>

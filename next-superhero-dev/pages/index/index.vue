@@ -3,7 +3,7 @@
 		<!-- 轮播图 start -->
 		<swiper :indicator-dots="true" :autoplay="true"  class="carousel">
 			<swiper-item v-for="carousel in carouselList" :key="carousel.id">
-				<image class="carousel" :src="carousel.image" mode="aspectFit"></image>
+				<image :data-movieid="carousel.movieId" @tap="handleToDetail" class="carousel" :src="carousel.image" mode="aspectFit"></image>
 			</swiper-item>
 		</swiper>
 		<!-- 轮播图 end -->
@@ -16,7 +16,7 @@
 			</view>
 		</view>
 		<scroll-view scroll-x="true" class="page-block hot">
-			<view class="single-poster" v-for="hot in hotMovies" :key="hot.id">
+			<view class="single-poster" v-for="hot in hotMovies" :key="hot.id" :data-movieid="hot.id" @tap="handleToDetail">
 				<view class="poster-wrapper">
 					<image :src="hot.poster" mode="" class="poster"></image>
 					<view class="movie-name">{{hot.name}}</view>
@@ -34,7 +34,16 @@
 			</view>
 		</view>
 		<view class="page-block hot-movies">
-			<video class="hot-movie-single" controls v-for="trailer in hotTrailers" :key="trailer.id" :src="trailer.trailer" :poster="trailer.poster"></video>
+			<video 
+				:id="trailer.id"
+				:data-playinIndex="trailer.id"
+				@play="handleVideoPlaying"
+				class="hot-movie-single" 
+				controls 
+				v-for="trailer in hotTrailers" 
+				:key="trailer.id" 
+				:src="trailer.trailer" 
+				:poster="trailer.poster"></video>
 		</view>
 		<!-- 热门预告 end -->
 		
@@ -46,7 +55,7 @@
 			</view>
 		</view>
 		<view class="page-block guess-u-like">
-			<view class="single-movie-like" v-for="(movie, index) in guessLikeMovies" :key="movie.id">
+			<view class="single-movie-like" v-for="(movie, index) in guessLikeMovies" :key="movie.id" :data-movieid="movie.id" @tap="handleToDetail">
 				<image :src="movie.cover" class="poster" mode=""></image>
 				<view class="movie-desc">
 					<view class="movie-title">{{movie.name}}</view>
@@ -92,6 +101,14 @@
 			this.getGuessULikeData(() => {
 				uni.stopPullDownRefresh()
 			})
+		},
+		onHide() {
+			// 页面被隐藏时  暂停播放
+			this.videoCtx && this.videoCtx.pause()
+		},
+		onShow() {
+			// 页面被再次显示的时候  继续播放
+			this.videoCtx && this.videoCtx.play()
 		},
 		methods: {
 			// 获取轮播图数据
@@ -153,6 +170,27 @@
 						duration: 0
 					}).export())
 				}, 350);
+			},
+			handleToDetail(e) {
+				let id = e.currentTarget.dataset.movieid
+
+				uni.navigateTo({
+					url: '../movie/movie?id=' + id
+				})
+			},
+			// 监听视频播放
+			handleVideoPlaying(e) {
+				console.log(e)
+				let id = e.currentTarget.dataset.playinindex
+				
+				this.videoCtx = uni.createVideoContext(id)
+				
+				this.hotTrailers.forEach(item => {
+
+					if(item.id !== id) {
+						uni.createVideoContext(item.id).pause()
+					}
+				})
 			}
 		},
 		components: {

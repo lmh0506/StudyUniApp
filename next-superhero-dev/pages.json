@@ -18,9 +18,30 @@
 			"style": {}
 		}, {
 			"path": "pages/movie/movie",
-			"style": {}
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"type":"transparent"
+						// #ifndef H5
+						,"buttons": [
+							{
+								"type":"share"
+							},
+							{
+								"type":"home"
+							}
+						]
+						
+						// #endif
+					}
+				}
+			}
 		}
-	],
+	    ,{
+            "path" : "pages/cover/cover",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "NEXT超英预告",

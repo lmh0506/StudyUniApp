@@ -201,7 +201,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _request = __webpack_require__(/*! ../../common/request.js */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var trailerStars = function trailerStars() {return __webpack_require__.e(/*! import() | components/trailerStars */ "components/trailerStars").then(__webpack_require__.bind(null, /*! ../../components/trailerStars.vue */ 39));};var _default =
+
+
+
+
+
+
+
+
+
+var _request = __webpack_require__(/*! ../../common/request.js */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var trailerStars = function trailerStars() {return __webpack_require__.e(/*! import() | components/trailerStars */ "components/trailerStars").then(__webpack_require__.bind(null, /*! ../../components/trailerStars.vue */ 49));};var _default =
 {
   data: function data() {
     return {
@@ -225,6 +234,14 @@ var _request = __webpack_require__(/*! ../../common/request.js */ 24);function _
     this.getGuessULikeData(function () {
       uni.stopPullDownRefresh();
     });
+  },
+  onHide: function onHide() {
+    // 页面被隐藏时  暂停播放
+    this.videoCtx && this.videoCtx.pause();
+  },
+  onShow: function onShow() {
+    // 页面被再次显示的时候  继续播放
+    this.videoCtx && this.videoCtx.play();
   },
   methods: {
     // 获取轮播图数据
@@ -286,6 +303,27 @@ var _request = __webpack_require__(/*! ../../common/request.js */ 24);function _
           duration: 0 }).
         export());
       }, 350);
+    },
+    handleToDetail: function handleToDetail(e) {
+      var id = e.currentTarget.dataset.movieid;
+
+      uni.navigateTo({
+        url: '../movie/movie?id=' + id });
+
+    },
+    // 监听视频播放
+    handleVideoPlaying: function handleVideoPlaying(e) {
+      console.log(e);
+      var id = e.currentTarget.dataset.playinindex;
+
+      this.videoCtx = uni.createVideoContext(id);
+
+      this.hotTrailers.forEach(function (item) {
+
+        if (item.id !== id) {
+          uni.createVideoContext(item.id).pause();
+        }
+      });
     } },
 
   components: {

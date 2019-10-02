@@ -41,7 +41,7 @@
 
 .score-block{
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	background: #fff;
 	margin-top: 20upx;
@@ -67,4 +67,63 @@
 	font-size: 12px;
 	color: grey;
 	line-height: 40upx;
+}
+
+.plots-block{
+	background: #f2f4f9;
+	padding: 20upx 40upx;
+}
+
+.plots-title{
+	color: #A9A9A9;
+	font-size: 14px;
+}
+
+.plots-desc{
+	margin-top: 10upx;
+	font-size: 16px;
+}
+
+.scroll-block{
+	background: #f7f4f9;
+	padding: 20upx 40upx;
+}
+
+.scroll-list{
+	width: 100%;
+	white-space: nowrap;
+	margin-top: 20upx;
+}
+
+.plot-image{
+	width: 220upx;
+	height: 320upx;
+	margin-right: 10upx;
+}
+
+.single-actor{
+	width: 170upx;
+	height: 240upx;
+	margin-right: 10upx;
+}
+
+.actor-wrapper{
+	display: inline-block;
+}
+
+.actor-name{
+	width: 170upx;
+	text-align: center;
+	font-size: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+
+.actor-role{
+	width: 170upx;
+	text-align: center;
+	color: #a9a9a9;
+	font-size: 13px;
 }

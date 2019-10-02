@@ -33,4 +33,11 @@
 .page-block {
   background-color: #fff;
 }
+.line-wrapper {
+  padding: 0 20rpx;
+}
+.line {
+  height: 1px;
+  background: #dbdbda;
+}
 
