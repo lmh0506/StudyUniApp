@@ -1,0 +1,79 @@
+/* 搜索框 start */
+.search-ico{
+	width: 40rpx;
+	height: 40rpx;
+}
+.search-ico-wrapper{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	background: #eaeaea;
+	height: 60rpx;
+}
+.search-text{
+	font-size: 14ox;
+	background: #eaeaea;
+	height: 60rpx;
+	width: 650rpx;
+}
+.search-block{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	width: 100%;
+	padding-bottom: 20rpx;
+	position: fixed;
+	
+	
+	top: 0;
+	
+	background: #f8f8f8;
+	z-index: 100;
+}
+/* 搜索框 end */
+/* 预告片列表  start */
+.poster{
+	width: 200rpx;
+	height: 270rpx;
+}
+.movie-list{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	
+	
+	
+	padding: 80rpx 30rpx 0;
+	
+}
+.movie-wrapper{
+	margin-bottom: 20rpx;
+}
+/* 预告片列表  end */
+

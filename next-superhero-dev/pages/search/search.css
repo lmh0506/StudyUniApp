@@ -1,0 +1,60 @@
+/* 搜索框 start */
+.search-ico{
+	width: 40upx;
+	height: 40upx;
+}
+.search-ico-wrapper{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #eaeaea;
+	height: 60upx;
+}
+.search-text{
+	font-size: 14ox;
+	background: #eaeaea;
+	height: 60upx;
+	width: 650upx;
+}
+
+.search-block{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding-bottom: 20upx;
+	position: fixed;
+	/* #ifdef H5 */
+	top: 88upx;
+	/* #endif */
+	/* #ifndef H5 */
+	top: 0;
+	/* #endif */
+	background: #f8f8f8;
+	z-index: 100;
+}
+
+/* 搜索框 end */
+
+/* 预告片列表  start */
+.poster{
+	width: 200upx;
+	height: 270upx;
+}
+.movie-list{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+	/* #ifdef H5 */
+	padding: 100upx 30upx 0;
+	/* #endif */
+	/* #ifndef H5 */
+	padding: 80upx 30upx 0;
+	/* #endif */
+}
+.movie-wrapper{
+	margin-bottom: 20upx;
+}
+
+/* 预告片列表  end */

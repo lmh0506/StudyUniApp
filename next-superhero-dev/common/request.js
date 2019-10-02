@@ -8,7 +8,7 @@ export function request({
 }) {
 	
 	if(method.toUpperCase() === 'POST') {
-    header['Content-Type'] = 'application/x-www-form-urlencoded'
+    header['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 	}
 	
 	return uni.request({
@@ -21,7 +21,7 @@ export function request({
 		}
 	}).then(resData => { //resData为一个数组，数组第一项为错误信息，第二项为返回数据
 		let [error, res] = resData;
-		console.log(resData)
+
 		return Promise.resolve(res.data)
 	})
 }
