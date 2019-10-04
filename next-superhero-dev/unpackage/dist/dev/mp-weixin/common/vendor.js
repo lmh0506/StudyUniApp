@@ -733,7 +733,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6978,7 +6978,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6999,14 +6999,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7082,7 +7082,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8400,7 +8400,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "enablePullDownRefresh": true, "usingComponents": { "trailer-stars": "/components/trailerStars" } }, "pages/search/search": { "navigationBarTitleText": "搜索预告片", "usingComponents": {} }, "pages/me/me": { "usingComponents": {} }, "pages/movie/movie": { "usingComponents": { "trailer-stars": "/components/trailerStars" } }, "pages/cover/cover": { "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "NEXT超英预告", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "enablePullDownRefresh": true, "usingComponents": { "trailer-stars": "/components/trailerStars" } }, "pages/search/search": { "navigationBarTitleText": "搜索预告片", "usingComponents": {} }, "pages/me/me": { "navigationBarTextStyle": "white", "navigationBarTitleText": "我的", "navigationBarBackgroundColor": "#ffd655", "usingComponents": {} }, "pages/movie/movie": { "usingComponents": { "trailer-stars": "/components/trailerStars" } }, "pages/cover/cover": { "usingComponents": {} }, "pages/registLogin/registLogin": { "navigationBarTitleText": "注册/登录", "navigationBarBackgroundColor": "#fff", "usingComponents": {} }, "pages/meInfo/meInfo": { "navigationBarTextStyle": "white", "navigationBarTitleText": "我的", "navigationBarBackgroundColor": "#ffd655", "usingComponents": {} }, "pages/meFace/meFace": { "navigationBarTextStyle": "white", "navigationBarTitleText": "头像上传", "navigationBarBackgroundColor": "#000", "usingComponents": {} }, "pages/faceCrop/faceCrop": { "navigationBarTextStyle": "white", "navigationBarTitleText": "头像上传", "navigationBarBackgroundColor": "#000", "usingComponents": {} }, "pages/meNickName/meNickName": { "navigationBarTextStyle": "white", "navigationBarTitleText": "修改昵称", "navigationBarBackgroundColor": "#ffd655", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "NEXT超英预告", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -9337,18 +9337,24 @@ function request(_ref)
 
 {var url = _ref.url,_ref$method = _ref.method,method = _ref$method === void 0 ? 'GET' : _ref$method,_ref$header = _ref.header,header = _ref$header === void 0 ? {} : _ref$header,_ref$data = _ref.data,data = _ref$data === void 0 ? {} : _ref$data;
 
-  if (method.toUpperCase() === 'POST') {
+  data = _objectSpread({},
+  data, {
+    qq: '843002185' });
+
+
+  if (method.toUpperCase() === 'POST' && !header['Content-Type']) {
     header['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+  }
+
+  if (header['Content-Type'] === 'application/json; charset=UTF-8') {
+    data = JSON.stringify(data);
   }
 
   return uni.request({
     url: ROOT_URL + url,
     method: method,
     header: header,
-    data: _objectSpread({},
-    data, {
-      qq: '843002185' }) }).
-
+    data: data }).
   then(function (resData) {//resData为一个数组，数组第一项为错误信息，第二项为返回数据
     var _resData = _slicedToArray(resData, 2),error = _resData[0],res = _resData[1];
 
